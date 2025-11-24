@@ -1,0 +1,67 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+humanos-api
+
+# Test binary
+*.test
+
+# Output of go coverage
+*.out
+coverage.html
+
+# Go workspace
+go.work
+go.work.sum
+
+# Dependency directories
+vendor/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment files (keep .env.example)
+.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+humanOS.db
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build output
+bin/
+dist/
+build/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Debug files
+debug
+*.debug
