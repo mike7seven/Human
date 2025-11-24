@@ -73,7 +73,7 @@ The digital twin is currently a **representational mirror**, not an agentic acto
 
 ## Related Projects
 
-This project draws inspiration from and integrates with Daniel Miessler's Human 3.0 ecosystem:
+This project draws inspiration from and integrates with [Daniel Miessler's](https://github.com/danielmiessler) Human 3.0 Mission & Ecosystem:
 
 | Project | Description | Layer Mapping |
 |---------|-------------|---------------|
@@ -93,7 +93,7 @@ This project draws inspiration from and integrates with Daniel Miessler's Human 
 | Coherence | Emerges from interoperability | Designed in from the start |
 | Structure | Separate repos per concern | Unified system-of-systems with layers |
 
-Both approaches are valid and complementary—they cohere to form an overall approach to achieving Human 3.0 and beyond.
+Both approaches are complementary—they cohere to form an overall approach to achieving Human 3.0 and beyond.
 
 ## Documentation
 
