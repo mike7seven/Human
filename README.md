@@ -11,9 +11,9 @@ tags:
 
 # Human System
 
-**A system of systems for human augmentation and digital twin definition.**
+**A way to define humans as a system of systems.**
 
-The Human System is an open specification and mono-repo architecture designed to serve as the foundation for defining one's digital AI twin. Just as AI systems like Claude, Gemini, or ChatGPT are defined with personalities, your digital twin mirrors you—your personality, values, and identity—as you define them.
+The Human System is an open specification and mono-repo architecture designed to serve as the foundation for defining you as a human as system for various use cases. 
 
 ## Vision
 
