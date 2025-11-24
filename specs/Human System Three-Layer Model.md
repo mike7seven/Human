@@ -22,7 +22,7 @@ The Human System is a system of systems. Each part of the system is a component 
 
 ## Layer 0 — Human Hardware Layer
 
-Name: Late Model 1977 (Male) Host Substrate
+Name: Late Model 1982 (Male) Host Substrate
 
 This is the physical and neurobiological hardware — the biological mainboard on layer 1 runs.
 
@@ -43,9 +43,7 @@ AGE.QUARTER-YEAR.BUILD
 - QUARTER → Minor version (0–4 corresponding to Q1, Q2, Q3, Q4)
 - BUILD → Incremental patches (hotfixes, updates, micro-evolutions)
 
-Current Example:
-
-47.3-2025.0+BUILD your current build is)
+Current Example: 42.3-2025.0+BUILD your current build is  
 
 ## Layer 1 — Operating System Layer
 
@@ -130,7 +128,7 @@ Exactly like real apps running on operating system and hardware.
 ```
 -------------------------------------------------------
 Layer 0: Human Hardware Layer
-    Name: Late Model 1977 (Male) Host Substrate
+    Name: Late Model 1982 (Male) Host Substrate
     Version: AGE.QUARTER."TBD" - BUILD number
     - Biological hardware
     - Neural wiring
