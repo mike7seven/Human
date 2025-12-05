@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# Docker Startup Script for Human OS
+# Automatically detects host IPv4 and configures API URL
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+echo -e "${BLUE}========================================${NC}"
+echo -e "${BLUE}   Human OS Docker Configuration       ${NC}"
+echo -e "${BLUE}========================================${NC}"
+echo ""
+
+# Check if DOMAIN is set, otherwise detect host IP
+if [ -z "$DOMAIN" ]; then
+    echo -e "${YELLOW}No DOMAIN set, detecting host IPv4 address...${NC}"
+
+    # Try multiple methods to detect the host's IPv4 address
+    HOST_IP=""
+
+    # Method 1: Try ip route (works on most Linux systems)
+    if command -v ip &> /dev/null; then
+        HOST_IP=$(ip route get 1.1.1.1 2>/dev/null | awk '{print $7; exit}')
+    fi
+
+    # Method 2: Try hostname -I (works on many Linux systems)
+    if [ -z "$HOST_IP" ] && command -v hostname &> /dev/null; then
+        HOST_IP=$(hostname -I 2>/dev/null | awk '{print $1}')
+    fi
+
+    # Method 3: Try ifconfig (works on macOS and some Linux)
+    if [ -z "$HOST_IP" ] && command -v ifconfig &> /dev/null; then
+        HOST_IP=$(ifconfig 2>/dev/null | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | head -n1)
+    fi
+
+    # Method 4: Check common network interfaces directly
+    if [ -z "$HOST_IP" ]; then
+        for iface in eth0 ens33 enp0s3 wlan0; do
+            if [ -d "/sys/class/net/$iface" ]; then
+                HOST_IP=$(ip addr show $iface 2>/dev/null | grep "inet " | awk '{print $2}' | cut -d/ -f1)
+                [ ! -z "$HOST_IP" ] && break
+            fi
+        done
+    fi
+
+    if [ -z "$HOST_IP" ]; then
+        echo -e "${RED}Error: Could not detect host IP address.${NC}"
+        echo -e "${YELLOW}Please set the DOMAIN environment variable manually:${NC}"
+        echo -e "  export DOMAIN=your-server-ip-or-domain"
+        echo -e "  docker compose up -d"
+        exit 1
+    fi
+
+    API_HOST="$HOST_IP"
+    echo -e "${GREEN}✓ Detected host IP: $HOST_IP${NC}"
+else
+    API_HOST="$DOMAIN"
+    echo -e "${GREEN}✓ Using configured DOMAIN: $DOMAIN${NC}"
+fi
+
+# Set the API URL
+export VITE_API_URL="http://${API_HOST}:8080/api/v1"
+echo -e "${GREEN}✓ API URL configured as: $VITE_API_URL${NC}"
+echo ""
+
+# Export for docker-compose
+echo "VITE_API_URL=$VITE_API_URL" > .env.docker
+echo -e "${GREEN}✓ Configuration saved to .env.docker${NC}"
+echo ""
+
+echo -e "${BLUE}========================================${NC}"
+echo -e "${GREEN}Configuration Complete!${NC}"
+echo -e "${BLUE}========================================${NC}"
+echo ""
+echo -e "  Backend will be available at:  ${YELLOW}http://${API_HOST}:8080${NC}"
+echo -e "  Frontend will be available at: ${YELLOW}http://${API_HOST}:3000${NC}"
+echo ""
+echo -e "${YELLOW}Starting Docker Compose...${NC}"
+echo ""
+
+# Start docker compose with the configured environment
+docker compose up -d
+
+echo ""
+echo -e "${GREEN}✓ Human OS is now running!${NC}"
+echo ""
+echo -e "Access the application at: ${YELLOW}http://${API_HOST}:3000${NC}"
+echo ""
+echo -e "To view logs: ${BLUE}docker compose logs -f${NC}"
+echo -e "To stop: ${BLUE}docker compose down${NC}"
+echo ""
