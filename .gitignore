@@ -40,8 +40,10 @@ Temporary Items
 # Personal/Private content
 # Uncomment if using private forks with personal data
 # Human-*/
-# **/personal/
-# **/private/
+**/personal/
+**/private/
+
+**/Reference/
 
 # Logs
 logs/
