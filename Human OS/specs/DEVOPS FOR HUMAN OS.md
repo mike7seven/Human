@@ -55,7 +55,7 @@ Everything is tailored to your actual cognitive patterns.
 
 1.1. Monolithic Thinking (bad) vs. Distributed Microservices (good)
 
-Your mind is already a distributed system:
+The human mind is already a distributed system:
 	•	Timeline simulator
 	•	Pattern scanner
 	•	Executive Function kernel

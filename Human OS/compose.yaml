@@ -1,7 +1,5 @@
-version: '3.8'
-
 services:
-  # Backend API Service (Go with SQLite)
+  # Backend API Service (SQLite)
   backend:
     build:
       context: .
