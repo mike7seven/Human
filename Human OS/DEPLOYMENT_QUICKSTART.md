@@ -11,7 +11,7 @@ cd /opt/Human/Human\ OS
 sudo ./docker-start.sh
 
 # Option 2: Manual with specific IP
-echo "VITE_API_URL=http://192.168.1.117:8080/api/v1" | sudo tee .env
+echo "VITE_API_URL=http://YOUR_SERVER_IP:8080/api/v1" | sudo tee .env
 sudo docker compose up -d --build
 ```
 
@@ -38,7 +38,7 @@ LOG_LEVEL=info
 DATABASE_PATH=/app/data/humanOS.db
 
 # Frontend Configuration (for Docker builds)
-VITE_API_URL=http://192.168.1.117:8080/api/v1
+VITE_API_URL=http://YOUR_SERVER_IP:8080/api/v1
 ```
 
 **Example for local development:**
@@ -106,7 +106,7 @@ docker compose up -d --build  # --build is critical!
 
 **Solution:**
 ```bash
-echo "VITE_API_URL=http://192.168.1.117:8080/api/v1" >> .env
+echo "VITE_API_URL=http://YOUR_SERVER_IP:8080/api/v1" >> .env
 ```
 
 ### Issue: Running `./docker-start.sh` says "command not found"

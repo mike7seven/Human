@@ -22,7 +22,7 @@ This will:
 If you have a domain name or want to specify a specific IP:
 
 ```bash
-export DOMAIN=your-domain.com  # or export DOMAIN=192.168.1.100
+export DOMAIN=your-domain.com  # or export DOMAIN=YOUR_SERVER_IP
 ./docker-start.sh
 ```
 
@@ -127,7 +127,7 @@ Or use the startup script again:
 
 **Solution**: Manually set the DOMAIN variable:
 ```bash
-export DOMAIN=192.168.1.100  # Your server's IP
+export DOMAIN=YOUR_SERVER_IP  # Your server's IP address
 ./docker-start.sh
 ```
 

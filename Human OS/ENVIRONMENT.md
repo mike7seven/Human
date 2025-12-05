@@ -19,7 +19,7 @@ Human OS supports two environments: `development` and `production`. The environm
 
 | Variable | Description | Required | Example |
 |----------|-------------|----------|---------|
-| `VITE_API_URL` | Frontend API endpoint | Yes (Docker) | `http://192.168.1.117:8080/api/v1` |
+| `VITE_API_URL` | Frontend API endpoint | Yes (Docker) | `http://YOUR_SERVER_IP:8080/api/v1` |
 
 ## Environment Differences
 
@@ -79,7 +79,7 @@ Use the `docker-start.sh` script which automatically:
 This generates:
 ```bash
 # .env (generated)
-VITE_API_URL=http://192.168.1.117:8080/api/v1
+VITE_API_URL=http://YOUR_DETECTED_SERVER_IP:8080/api/v1
 PORT=8080
 ENV=production
 LOG_LEVEL=info
@@ -182,7 +182,7 @@ PORT=8080
 ENV=production
 LOG_LEVEL=info
 DATABASE_PATH=/app/data/humanOS.db
-VITE_API_URL=http://192.168.1.117:8080/api/v1
+VITE_API_URL=http://YOUR_SERVER_IP:8080/api/v1
 ```
 
 **Commands:**
