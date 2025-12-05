@@ -31,11 +31,11 @@ export DOMAIN=your-domain.com  # or export DOMAIN=192.168.1.100
 If you prefer to use docker compose directly:
 
 ```bash
-# Set the API URL environment variable
-export VITE_API_URL=http://YOUR_IP_OR_DOMAIN:8080/api/v1
+# Create .env file with your server's IP or domain
+echo "VITE_API_URL=http://YOUR_IP_OR_DOMAIN:8080/api/v1" > .env
 
-# Start the services
-docker compose up -d
+# Start the services (--build is required to bake in the API URL)
+docker compose up -d --build
 ```
 
 ## Understanding the Configuration

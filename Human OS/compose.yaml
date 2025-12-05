@@ -12,10 +12,10 @@ services:
       # Persist SQLite database
       - human-os-data:/app/data
     environment:
-      - PORT=8080
-      - ENV=production
-      - LOG_LEVEL=info
-      - DATABASE_PATH=/app/data/humanOS.db
+      - PORT=${PORT:-8080}
+      - ENV=${ENV:-production}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - DATABASE_PATH=${DATABASE_PATH:-/app/data/humanOS.db}
     networks:
       - human-os-network
     healthcheck:
