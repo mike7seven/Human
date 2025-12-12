@@ -177,7 +177,7 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/humanOS.yourdomain.com/privkey.pem;
 
     location / {
-        proxy_pass http://localhost:3000;
+        proxy_pass http://localhost:3001;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
@@ -208,15 +208,15 @@ docker compose restart backend
 
 Both services run on a custom bridge network (`human-os-network`):
 - Services can reach each other using service names (e.g., `backend:8080`)
-- External access is via mapped ports (3000, 8080)
+- External access is via mapped ports (3001, 8080)
 
 Port mapping:
-- `3000:3000` - Frontend (Host:Container)
+- `3001:3001` - Frontend (Host:Container)
 - `8080:8080` - Backend API (Host:Container)
 
 ## Security Notes
 
-1. **Firewall**: Ensure ports 3000 and 8080 are open in your firewall
+1. **Firewall**: Ensure ports 3001 and 8080 are open in your firewall
 2. **Environment Variables**: Never commit `.env` files with sensitive data
 3. **Database**: The SQLite database is persisted in a Docker volume
 4. **Updates**: Regularly update the Docker images and rebuild:
